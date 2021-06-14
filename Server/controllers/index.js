@@ -1,29 +1,32 @@
-const Trip = require('../models/Trip') //brings in the trip model
+// const express = require('express');
+// const router = express.Router()
+// const {ensureAuth, ensureGuest} = require('../middleware/auth') //using destructuring to bring in the middleware auth functions to routes
 
-module.exports = {
+// const Trip = require('../models/Trip') //brings in Trip model
 
-//* @desc Show all public trips
-// @route GET /trips
-    getTrips: async (req, res) => {
-        try {
-            const trips = await Trip.find({ status: 'public'});  //find public trips
+// //* @desc Login/Landing page
+// // @route GET / 
+// router.get('/', ensureGuest, (req, res) => { //whenever middleware is used as a route it is added as a second argument--->ensureGuest added here for user that is not logged in
+//     res.render('login', {
+//         layout: 'login', //adds login layout to login route
+//     })
+// })
 
-                res.status(200).json(trips);
-        } catch (error) {
-        console.error(error)
-        res.status(404).json({ message: error.message });
-        }
-        
-    },
-
-    createTrip: async (req, res) => {
-        try {
-            res.send('Post Creation')
-        } catch (error) {
-            console.log(error);
-        }
-    }
+// //* @desc Dashboard
+// // @route GET /dashboard
+// router.get('/dashboard', ensureAuth, async (req, res) => { //ensureAuth added for logged in user from auth middleware function
+//     try {
+//         const trips = await Trip.find({ user: req.user.id }).lean()  //limits this to the user with the Id---> .lean() returns document from query as plain js objects not MongooseDocuments (needed to use and pass into template)
+//         res.render('dashboard', {
+//             name: req.user.firstName, //Added to render name on dashboard view
+//             trips // passes in trips
+//         })
+//     } catch(err) {
+//         console.error(err)
+//         res.render('error/500')
+//     }
 
 
+// })
 
-}
+// module.exports = router

@@ -3,6 +3,29 @@ const Trip = require('../models/Trip') //brings in the trip model
 
 module.exports = {
 
+//TODO @desc Show add page
+// @route GET /trips/add
+
+
+//TODO @desc Process add form
+// @route POST /trips
+
+    createTrip: async (req, res) => {
+        const trip = req.body;
+
+        const newTrip = new TripMessage(trip); 
+
+        try {
+            await newTrip.save();
+
+            res.status(201).json(newTrip);
+        } catch (error) {
+            res.status(409).json({ message: error.message });
+        }
+    },
+
+
+
 //* @desc Show all public trips
 // @route GET /trips
     getTrips: async (req, res) => {
@@ -17,15 +40,20 @@ module.exports = {
         
     },
 
-    createTrip: async (req, res) => {
-        try {
-            res.send('Post Creation')
-        } catch (error) {
-            console.log(error);
-        }
-    }
+//TODO @desc Show single trip
+// @route GET /trips/:id
 
+//TODO @desc Show edit page
+// @route GET /trips/edit/:id
 
+//TODO @desc Show Update trip
+// @route PUT trips/:id
+
+//TODO @desc Delete trip
+// @route DELETE /trips/:id
+
+//TODO @desc User Trips
+// @route GET /trips/user/:userId
 
 }
 

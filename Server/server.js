@@ -11,6 +11,7 @@ const dotenv = require('dotenv');
 // const MongoStore = require('connect-mongo')
 const connectDB = require('./config/db');
 const tripsRoutes = require("./routes/trips");
+const cors = require('cors');
 
 
 //* Load config
@@ -20,13 +21,14 @@ connectDB()
 
 const server = express();
 
-
+server.use('/trips', tripsRoutes);
 
 //* Body parser
 server.use(express.urlencoded({ extended: false })) //middleware to get data from req.body added after line 17 in trips.js
 server.use(express.json()) // accepts json data, added in case needed at some point
+server.use(cors());
 
-server.use('/trips', tripsRoutes);
+
 
 const PORT = process.env.PORT || 5000
 
