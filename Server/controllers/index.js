@@ -4,22 +4,12 @@
 
 // const Trip = require('../models/Trip') //brings in Trip model
 
-// // //* @desc Login/Landing page
-// // // @route GET / 
-// // router.get('/', ensureGuest, (req, res) => { //whenever middleware is used as a route it is added as a second argument--->ensureGuest added here for user that is not logged in
-// //     res.render('login', {
-// //         layout: 'login', //adds login layout to login route
-// //     })
-
-// // })
-
-// router.get('/', async (req, res) => {
-//     try {
-//         const trips = await Trip.find({ status: 'public'})
-//         res.json(trips)
-//     } catch (err) {
-//         res.status(500).json({ message: err.message})
-//     }
+// //* @desc Login/Landing page
+// // @route GET / 
+// router.get('/', ensureGuest, (req, res) => { //whenever middleware is used as a route it is added as a second argument--->ensureGuest added here for user that is not logged in
+//     res.render('login', {
+//         layout: 'login', //adds login layout to login route
+//     })
 // })
 
 // //* @desc Dashboard
@@ -38,6 +28,5 @@
 
 
 // })
-
 
 // module.exports = router

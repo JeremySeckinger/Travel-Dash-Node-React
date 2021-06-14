@@ -2,7 +2,7 @@ import React from "react";
 import { Breadcrumb, Button, ButtonGroup, Row, Col, InputGroup, Form, Dropdown, Card, Table } from "@themesberg/react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faPlus, faCog, faCheck, faSearch, faSlidersH } from '@fortawesome/free-solid-svg-icons';
-import usertrips from '../data/usertrips';
+import usertrips from '../../data/usertrips';
 
 export default () => {
     return (

@@ -15,7 +15,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux' // keeps track of store and allows access from anywhere inside of app
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk'; //used for async actions with redux
 
@@ -32,7 +32,8 @@ import "./scss/volt.scss";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "react-datetime/css/react-datetime.css";
 
-import { reducers } from './reducers';
+import reducers from './reducers';
+
 import HomePage from "./pages/HomePage";
 import ScrollToTop from "./components/ScrollToTop";
 
