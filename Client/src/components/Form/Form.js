@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
 import { Row, Card, Form, Button  } from "@themesberg/react-bootstrap";
 
-export const PostTripForm = () => {
-    // const [] = useState(""); 
+const PostTripForm = () => {
+    const [postData, setPostData] = useState({
+        creator: '', title: '', message: '', tags: '', selectedFile: ''
+    })
+
+    const handleSubmit = () => {
+
+    }
+
+    const clear = () => {
+
+    }
 
     return (
 
@@ -11,33 +21,34 @@ export const PostTripForm = () => {
                 <Card.Body>
                 <h3>Add Trip</h3>
                     <Row>
-                        <Form action="/trips" method="POST" class="col s12">
+                        <Form action="/trips" onSubmit={handleSubmit} className="col s12">
                             <Row>
-                            <Form.Group id="title">
-                                <Form.Label>Title</Form.Label>
-                                    <Form.Control required type="text" placeholder="Enter trip title" />
-                            </Form.Group>
-                            </Row>
-                            <Row>
-                                <Form.Group>
-                                    <Form.Label>Status</Form.Label> 
-                                    <select class="form-select">
-                                        <option value="public" selected>Public</option>
-                                        <option value="private">Private</option>
-                                    </select>
-                                    <label for="status">Status</label>
+                                <Form.Group id="title">
+                                    <Form.Label>Title</Form.Label>
+                                        <Form.Control required type="text" placeholder="Enter trip title" />
                                 </Form.Group>
                             </Row>
                             <Row>
-                                <div class="input-field">
-                                    <h5>Add trip details</h5>
-                                    <textarea id="body" name="body"></textarea>
-                                </div>
+                                <Form.Group> 
+                                    <Form.Label>Status</Form.Label> 
+                                    <Form.Control as="select">
+                                        <option selected>Public</option>
+                                        <option>Private</option>
+                                    </Form.Control>
+                                </Form.Group>
                             </Row>
-                            <div className="mt-3">
+                            <Row>
+                                <Form.Group className="input-field">
+                                    <Form.Label sm="2">
+                                        Add trip details here
+                                    </Form.Label>
+                                    <Form.Control as="textarea" placeholder="Add trip details here" style={{ height: '100px' }} id="body" name="body" />
+                                </Form.Group>
+                            </Row>
+                            <Row className="mt-3">
                                 <Button variant="primary" type="submit">Save</Button>
-                                <Button variant="primary" type="cancel">Cancel</Button>
-                            </div>
+                                <Button variant="primary" onClick={clear}>Cancel</Button>
+                            </Row>
                         </Form>
                     </Row>
                 </Card.Body>
@@ -45,3 +56,5 @@ export const PostTripForm = () => {
         </>
     );
 }
+
+export default PostTripForm;
