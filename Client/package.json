@@ -1,8 +1,7 @@
 {
-  "name": "Travel-Dash-React-Node",
-  "description": "Travel Dashboard made with Volt-React-Dashboard",
-
+  "name": "client",
   "version": "1.0.0",
+  "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
