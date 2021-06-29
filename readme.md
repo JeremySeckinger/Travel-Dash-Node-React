@@ -8,7 +8,7 @@ My focus on this project is to create with scalability in mind. I am diving deep
 
 ## Description
 
-The frontend uses Themesburg's Volt free and open source Bootstrap 5 Admin Dashboard. It serves as the base template for the react app--allowing Travel Dash to use a modern UI/UX focused design. The components will be heavily customized to adapt to the focus of Travel Dash, and additional features will be added on to its base. 
+The frontend uses Themesburg's Volt free and open source Bootstrap 5 Admin Dashboard. It serves as the base template for the react app--allowing Travel Dash to use a modern UI/UX focused design. The components will be heavily customized to adapt to the focus of Travel Dash, with plenty of original components and additional features added on to its base. 
 
 The Node.js w/Express backend is being converted into a true backend API for communication with the frontend. 
 
