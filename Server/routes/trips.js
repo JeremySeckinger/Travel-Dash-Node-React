@@ -4,7 +4,7 @@ const tripController = require('../controllers/trips'); //brings in getTrips fun
 
 const router = express.Router();
 
-
+// Accessed by going to localhost:5000/trips
 router.get('/', tripController.getTrips); //executes the getTrips function
 router.post('/', tripController.createTrip); //executes the create trip function
 

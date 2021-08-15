@@ -3,7 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose') // Added in after adding MongoStore session into session middleware (line 36)
 const dotenv = require('dotenv');
-// const morgan = require('morgan') //shows requests made directly in console (HTTP method and such)
+const morgan = require('morgan') //shows requests made directly in console (HTTP method and such)
 // const exphbs = require('express-handlebars')
 // const methodOverride = require('method-override')
 // const passport = require('passport')
