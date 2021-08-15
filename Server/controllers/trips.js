@@ -13,7 +13,7 @@ module.exports = {
     createTrip: async (req, res) => {
         const trip = req.body;
 
-        const newTrip = new TripMessage(trip); 
+        const newTrip = new Trip(trip); 
 
         try {
             await newTrip.save();

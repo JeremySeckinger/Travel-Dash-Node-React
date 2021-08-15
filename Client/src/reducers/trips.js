@@ -3,7 +3,7 @@ export default (trips = [], action) => { //trips is the state here, and is equal
         case 'FETCH_ALL': 
             return action.payload;
         case 'CREATE':
-            return trips;
+            return [ ...trips, action.payload]; // returns trips using spread operator, and adds new trip that is stored in the action payload
         default:
             return trips;
     }

@@ -8,6 +8,7 @@ export const Routes = {
     Settings: { path: "/settings" },
     Users: { path: "/users" },
     UserTrips: { path: "/usertrips" },
+    AddTrip: { path: "/addtrip" },
     // Login: {path: "/login"},
     BootstrapTables: { path: "/tables/bootstrap-tables" },
     Billing: { path: "/examples/billing" },

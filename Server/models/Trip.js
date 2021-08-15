@@ -16,15 +16,15 @@ const TripSchema = new mongoose.Schema({  // pass in an object with the fields w
         default: 'public',
         enum: ['public', 'private'],// enum list of values for status options uses array
     },
-    user: { // user connected to each trip
-        type: mongoose.Schema.Types.ObjectId, // special type of mongoose object id connected with ref below
-        ref: 'User', //refers to User model
-    },
+    // user: { // user connected to each trip
+    //     type: mongoose.Schema.Types.ObjectId, // special type of mongoose object id connected with ref below
+    //     ref: 'User', //refers to User model
+    // },
 
     createdAt: { // time stamps creation
         type: Date,
-        default: Date.now, // automatically puts date and time in
-    }
-})
+        default: Date.now // automatically puts date and time in
+    },
+});
 
-module.exports = mongoose.model('Trip', TripSchema)
+module.exports = mongoose.model('Trip', TripSchema);

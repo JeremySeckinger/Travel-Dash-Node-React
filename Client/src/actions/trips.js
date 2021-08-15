@@ -10,3 +10,13 @@ export const getTrips = () => async (dispatch) => { //redux-thunk is the "=> ayn
         console.log(error.message)
     }
 }
+
+export const createTrip = (trip) => async (dispatch) => { // dispatch comes from redux-thunk
+    try {
+        const { data } = await api.createTrip(trip); // destructure data from response, make api post request to backend server
+
+        dispatch({ type: 'CREATE', payload: data }); //dispatches action with data as payload
+    } catch (error) {
+        console.log(error);
+    }
+} //from here the action needs to be dispatched-->go into the PostTripForm ('Form/Form')form to do this
