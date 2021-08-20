@@ -12,11 +12,11 @@ const Trips = () => {
 
     return (
         !trips.length ? <Spinner animation="border" role="status"><span className="visually-hidden">Loading...</span></Spinner> : (
-        <Card>
+        <>
             {trips.map((trip) => (
                 <Trip trip={trip} />
             ))}
-        </Card>
+        </>
         )
     );
 }

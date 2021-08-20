@@ -1,9 +1,21 @@
 import React from 'react';
-import { Card, Row, Col,  } from '@themesberg/react-bootstrap';
+import { Card, Row, Col, Button  } from '@themesberg/react-bootstrap';
+import moment from 'moment';
 
-const Trip = () => {
+const Trip = ({ trip }) => { //destructures trip and brings in to use for component below
     return (
-        <h1>POST</h1>
+        <Row>
+            <Col className="">
+                <Card className="">
+                    <Card.Body>
+                        <Card.Title className="center-align">{trip.title}</Card.Title>
+                        <Card.Text>{trip.body}</Card.Text>
+                        <span>{moment(trip.createdAT).fromNow()}</span>
+                        <Button variant="primary">Go somewhere</Button>
+                    </Card.Body>
+                </Card>
+            </Col>
+        </Row> 
     );
     
 }
@@ -11,16 +23,3 @@ const Trip = () => {
 export default Trip;
 
 
-{/* <Card.Body>
-<h1 class="cyan-text text-darken-4">Trips</h1>
-<Row>
-    <Col className="s12 m4">
-        <Card className="">
-            <Card.Body>
-                <Card.Title className="center-align">{title}</Card.Title>
-                <Card.Text></Card.Text>
-            </Card.Body>
-        </Card>
-    </Col>
-</Row> 
-</Card.Body> */}
