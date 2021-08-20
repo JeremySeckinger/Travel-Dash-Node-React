@@ -1,7 +1,7 @@
 import * as api from '../api';
 
 // Action creators--functions that return actions
-export const getTrips = () => async (dispatch) => { //redux-thunk is the "=> aync (dispatch)" portion
+export const getTrips = () => async (dispatch) => { //redux-thunk is the "=> async (dispatch)" portion
     try {
         const { data } = await api.fetchTrips(); //getting the response-->"{ data }"
 

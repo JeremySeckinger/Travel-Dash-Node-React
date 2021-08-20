@@ -37,9 +37,9 @@ export default () => {
     </div>
 
     <Card border="light" className="table-wrapper table-responsive shadow-sm">
-            <Card.Body>
-
-            </Card.Body>
+        <Card.Body>
+            <Trips />
+        </Card.Body>
     </Card>
 
     </>
