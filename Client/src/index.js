@@ -19,9 +19,6 @@ import { Provider } from 'react-redux' // keeps track of store and allows access
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk'; //used for async actions with redux
 
-
-
-
 import { HashRouter } from "react-router-dom"; // A <Router> that uses the hash portion of the URL (i.e. window.location.hash) to keep your UI in sync with the URL.
 
 
@@ -32,6 +29,7 @@ import "./scss/volt.scss";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "react-datetime/css/react-datetime.css";
 
+//reducers
 import reducers from './reducers';
 
 import HomePage from "./pages/HomePage";
