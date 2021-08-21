@@ -4,7 +4,6 @@ import { Routes } from "../routes";
 
 //* pages
 import Trips from "./dashboard/Trips";
-// import BootstrapTables from "./tables/BootstrapTables";
 // import Signin from "./examples/Signin";
 // import Signup from "./examples/Signup";
 import ForgotPassword from "./examples/ForgotPassword";
