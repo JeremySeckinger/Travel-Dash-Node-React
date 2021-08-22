@@ -3,7 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose') // Added in after adding MongoStore session into session middleware (line 36)
 const dotenv = require('dotenv');
-const morgan = require('morgan') //shows requests made directly in console (HTTP method and such)
+const morgan = require('morgan'); //shows requests made directly in console (HTTP method and such)
 // const exphbs = require('express-handlebars')
 // const methodOverride = require('method-override')
 // const passport = require('passport')
@@ -32,6 +32,7 @@ server.use(function(req, res, next) {
 server.use(express.urlencoded({ extended: false })); //middleware to get data from req.body added after line 17 in trips.js
 server.use(express.json()); // accepts json data, added in case needed at some point
 server.use(cors());
+server.use(morgan('combined'))
 
 
 server.use('/trips', tripsRoutes);

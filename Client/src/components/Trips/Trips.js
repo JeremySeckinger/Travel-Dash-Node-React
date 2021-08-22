@@ -1,4 +1,4 @@
-import { Card, Spinner} from '@themesberg/react-bootstrap';
+import { Card, Row, Spinner} from '@themesberg/react-bootstrap';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -12,11 +12,11 @@ const Trips = () => {
 
     return (
         !trips.length ? <Spinner animation="border" role="status"><span className="visually-hidden">Loading...</span></Spinner> : (
-        <>
+        <Row xs={1} md={3} className="g-4">
             {trips.map((trip) => (
                 <Trip trip={trip} />
             ))}
-        </>
+        </Row>
         )
     );
 }
