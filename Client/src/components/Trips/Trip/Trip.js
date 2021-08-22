@@ -11,7 +11,7 @@ const Trip = ({ trip }) => { //destructures trip and brings in to use for compon
                         <Card.Title className="center-align">{trip.title}</Card.Title>
                         <Card.Text>{trip.body}</Card.Text>
                         <Card.Text>{moment(trip.createdAT).fromNow()}</Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Button variant="primary">view trip</Button>
                     </Card.Body>
                 </Card>
             </Col>

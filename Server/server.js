@@ -4,11 +4,6 @@ const express = require('express');
 const mongoose = require('mongoose') // Added in after adding MongoStore session into session middleware (line 36)
 const dotenv = require('dotenv');
 const morgan = require('morgan'); //shows requests made directly in console (HTTP method and such)
-// const exphbs = require('express-handlebars')
-// const methodOverride = require('method-override')
-// const passport = require('passport')
-// const session = require('express-session')
-// const MongoStore = require('connect-mongo')
 const connectDB = require('./config/db');
 const tripsRoutes = require("./routes/trips");
 const cors = require('cors');
@@ -32,7 +27,10 @@ server.use(function(req, res, next) {
 server.use(express.urlencoded({ extended: false })); //middleware to get data from req.body added after line 17 in trips.js
 server.use(express.json()); // accepts json data, added in case needed at some point
 server.use(cors());
-server.use(morgan('combined'))
+
+if(process.env.NODE_ENV === 'development') {
+    server.use(morgan('dev')) //morgan middleware
+}
 
 
 server.use('/trips', tripsRoutes);
@@ -43,31 +41,6 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`));
 
 //! Previous server code below--refactored above
-// const path = require('path') //path is core node.js module
-// const express = require('express')
-// const mongoose = require('mongoose') // Added in after adding MongoStore session into session middleware (line 36)
-// const dotenv = require('dotenv')
-// const morgan = require('morgan') //shows requests made directly in console (HTTP method and such)
-// const exphbs = require('express-handlebars')
-// const methodOverride = require('method-override')
-// const passport = require('passport')
-// const session = require('express-session')
-// const MongoStore = require('connect-mongo')
-// const connectDB = require('./config/db')
-
-// //* Load config
-// dotenv.config({ path: './config/.env' })
-
-// //* Passport config
-// require('./config/passport')(passport) //passport is being passed in as an argument that was just required above so that it can be used in the config passport file
-
-// connectDB()
-
-// const server = express()
-
-// //* Body parser
-// server.use(express.urlencoded({ extended: false })) //middleware to get data from req.body added after line 17 in trips.js
-// server.use(express.json()) // accepts json data, added in case needed at some point
 
 // //* Logging  --> Only want morgan running in dev mode hence the 'if' statement
 // if(process.env.NODE_ENV === 'development') {
