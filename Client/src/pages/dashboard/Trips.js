@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { getTrips } from '/Users/jeremyseckinger/Desktop/100-Devs/100-hrs-project/travel-dash-react-node/Client/src/actions/trips.js';
 import Trips from '/Users/jeremyseckinger/Desktop/100-Devs/100-hrs-project/travel-dash-react-node/Client/src/components/Trips/Trips.js';
-import Form from '/Users/jeremyseckinger/Desktop/100-Devs/100-hrs-project/travel-dash-react-node/Client/src/components/Form/Form.js';
+import PostTripForm from '/Users/jeremyseckinger/Desktop/100-Devs/100-hrs-project/travel-dash-react-node/Client/src/components/Form/Form.js';
 
 
 
@@ -17,7 +17,7 @@ export default () => {
 
     useEffect(() => {
         dispatch(getTrips());
-    }, [dispatch]);
+    }, [currentId, dispatch]);
 
 
     return (
@@ -36,6 +36,7 @@ export default () => {
         </div>
 
         <Trips setCurrentId={setCurrentId}/>
+        <PostTripForm currentId={currentId} setCurrentId={setCurrentId}/>
     </>
     );
 };

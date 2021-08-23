@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsDown, faThumbsUp, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
-import { Card, Row, Col, Button } from '@themesberg/react-bootstrap';
+import { faThumbsUp, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { Card, Col, Button } from '@themesberg/react-bootstrap';
 import moment from 'moment';
 
 const Trip = ({ trip, setCurrentId }) => { //destructures trip and brings in to use for component below
@@ -11,7 +11,7 @@ const Trip = ({ trip, setCurrentId }) => { //destructures trip and brings in to 
                 <Card border="primary" className="text-center">
                     <Card.Body>
                         <div className="float-end">
-                            <Button href="#/AddTrip" variant="info" className="btn-icon-only btn-circle" onClick={() => setCurrentId(trip._id)}><FontAwesomeIcon icon={faEdit} /></Button>
+                            <Button variant="info" className="btn-icon-only btn-circle" onClick={() => setCurrentId(trip._id)}><FontAwesomeIcon icon={faEdit} /></Button>
                         </div>
                         <Card.Header className="center-align" as="h3">{trip.title}</Card.Header>                
                         <Card.Text style={{ height: '10rem', margin: '1rem'}}>{trip.body}</Card.Text>

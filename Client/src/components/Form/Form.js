@@ -21,14 +21,16 @@ const PostTripForm = ({ currentId, setCurrentId }) => {
         if(currentId) {
             dispatch(updateTrip(currentId, tripData));
         } else {
-            dispatch(createTrip(tripData));
+            dispatch(createTrip(tripData)); //makes request when submit button is clicked, once action is dispatched--> go to reducers
         }
 
-        dispatch(createTrip(tripData)) //makes request when submit button is clicked, once action is dispatched--> go to reducers
+        clear();
+
     }
 
     const clear = () => {
-
+        setCurrentId(null);
+        setTripData({ title: '', status: '', body: '' })
     }
 
     return (
@@ -36,7 +38,7 @@ const PostTripForm = ({ currentId, setCurrentId }) => {
         <>           
             <Card border="light" className="bg-white shadow-sm mb-4">
                 <Card.Body>
-                <h3>Add Trip</h3>
+                <h3>{ currentId ? 'Edit' : 'Add'} Trip</h3>
                     <Row>
                         <Form noValidate onSubmit={handleSubmit} className="col s12">
                             <Row>
@@ -50,7 +52,7 @@ const PostTripForm = ({ currentId, setCurrentId }) => {
                                 <Form.Group className="mb-3"> 
                                     <Form.Label>Status</Form.Label> 
                                     <Form.Select name="status" value={tripData.status} onChange={(e) => setTripData({ ...tripData, status: e.target.value })}>
-                                        <option value="public" defaultValue>Public</option>
+                                        <option value="public">Public</option>
                                         <option value="private">Private</option>
                                     </Form.Select>
                                 </Form.Group>

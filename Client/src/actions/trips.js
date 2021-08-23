@@ -7,7 +7,7 @@ export const getTrips = () => async (dispatch) => { //redux-thunk is the "=> asy
 
         dispatch({ type: 'FETCH_ALL', payload: data });
     } catch (error) {
-        console.log(error.message)
+        console.log(error)
     }
 }
 
@@ -23,10 +23,10 @@ export const createTrip = (trip) => async (dispatch) => { // dispatch comes from
 
 export const updateTrip = (id, trip) => async (dispatch) => {
     try {
-        const { data } = await api.updateTrip(id, trip);  //Returning updated trip here---response is destructed as data from response
+        const { data } = await api.updateTrip(id, trip);  //Returning updated trip here---response is deconstructed as data from response
 
         dispatch({ type: 'UPDATE', payload: data});
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
     }
 }
