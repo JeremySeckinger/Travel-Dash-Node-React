@@ -1,3 +1,5 @@
+const express = require('express');
+const mongoose = require('mongoose');
 
 const Trip = require('../models/Trip') //brings in the trip model
 
@@ -34,7 +36,7 @@ module.exports = {
     },
 
 //* @desc Update trip
-// @route PUT trips/:id
+// @route PATCH trips/:id
     updateTrip: async (req, res) => {
             const { id: _id } = req.params;
             const trip = req.body;
@@ -42,19 +44,15 @@ module.exports = {
 
             if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No trip with that id');
 
-            const updatedTrip = await TripMessage.findByIdAndUpdate(_id, trip, { new: true });
+            const updatedTrip = await Trip.findByIdAndUpdate(_id, trip, { new: true });
         
-            res.json(updatedPost);
+            res.json(updatedTrip);
     }
+
+
 
 //TODO @desc Show single trip
 // @route GET /trips/:id
-
-//TODO @desc Show edit page
-// @route GET /trips/edit/:id
-
-
-
 
 
 //TODO @desc Delete trip
@@ -64,21 +62,3 @@ module.exports = {
 // @route GET /trips/user/:userId
 
 }
-
-//! Previous function 
-// export const getPosts =  async (req, res) => {   //get request for trips with async await (mongoose) and try/catch
-//     try {
-//         const trips = await Trip.find({ status: 'public'})  //find public trips
-//             .populate('user') //populate with user info from user model that's not part of trip 
-//             .sort({ createdAt: 'desc'}) // sorts trips by time created in decending order
-//             .lean() //added to pass into template
-
-//             res.render('trips/index', { //renders newly created public trips page and passes in trips
-//                 trips,
-//             })
-
-//     } catch (err) {
-//         console.error(err)
-//         res.render('error/500')
-//     }
-// }

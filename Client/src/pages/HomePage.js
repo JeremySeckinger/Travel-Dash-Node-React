@@ -13,7 +13,7 @@ import NotFoundPage from "./examples/NotFound";
 import ServerError from "./examples/ServerError";
 import Users from "./dashboard/Users";
 import UserTrips from "./dashboard/UserTrips";
-import AddTrip from "./dashboard/AddTrip";
+// import AddTrip from "./dashboard/AddTrip";
 // import Login from "./Login";
 
 
@@ -75,7 +75,7 @@ export default () => (
     <RouteWithSidebar exact path={Routes.Trips.path} component={Trips} />
     <RouteWithSidebar exact path={Routes.Users.path} component={Users} />
     <RouteWithSidebar exact path={Routes.UserTrips.path} component={UserTrips} /> 
-    <RouteWithSidebar exact path={Routes.AddTrip.path} component={AddTrip} /> 
+    {/* <RouteWithSidebar exact path={Routes.AddTrip.path} component={AddTrip} />  */}
     {/* <RouteWithSidebar exact path={Routes.Login.path} component={Login} />  */}
 
 
