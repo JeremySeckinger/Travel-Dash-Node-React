@@ -3,13 +3,8 @@ const Trip = require('../models/Trip') //brings in the trip model
 
 module.exports = {
 
-//TODO @desc Show add page
-// @route GET /trips/add
-
-
-//TODO @desc Process add form
+//* @desc Process add form
 // @route POST /trips
-
     createTrip: async (req, res) => {
         const trip = req.body;
 
@@ -23,8 +18,6 @@ module.exports = {
             res.status(409).json({ message: error.message });
         }
     },
-
-
 
 //* @desc Show all public trips
 // @route GET /trips
@@ -40,14 +33,29 @@ module.exports = {
         
     },
 
+//* @desc Update trip
+// @route PUT trips/:id
+    updateTrip: async (req, res) => {
+            const { id: _id } = req.params;
+            const trip = req.body;
+            
+
+            if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No trip with that id');
+
+            const updatedTrip = await TripMessage.findByIdAndUpdate(_id, trip, { new: true });
+        
+            res.json(updatedPost);
+    }
+
 //TODO @desc Show single trip
 // @route GET /trips/:id
 
 //TODO @desc Show edit page
 // @route GET /trips/edit/:id
 
-//TODO @desc Show Update trip
-// @route PUT trips/:id
+
+
+
 
 //TODO @desc Delete trip
 // @route DELETE /trips/:id

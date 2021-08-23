@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Card, Form, Button  } from "@themesberg/react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { createTrip } from "../../actions/trips";
+import { createTrip, updateTrip } from "../../actions/trips";
 
-const PostTripForm = () => {
+
+
+const PostTripForm = ({ currentId, setCurrentId }) => {
     const [tripData, setTripData] = useState({ title: '', status: '', body: '' }) 
+    const trip = useSelector((state) => currentId ? state.trips.find((t) => t._id === currentId) : null )
     const dispatch = useDispatch(); //brought in from actions/trips.js
+
+    useEffect(() => {
+        if(trip) setTripData(trip);
+    }, [trip]) // <--dependency array (when the value changes from nothing-->trip then use the above function)
 
     const handleSubmit = (e) => { // once user submits--> send post request with all data entered
         e.preventDefault(); // stops browser from refreshing
+
+        if(currentId) {
+            dispatch(updateTrip(currentId, tripData));
+        } else {
+            dispatch(createTrip(tripData));
+        }
 
         dispatch(createTrip(tripData)) //makes request when submit button is clicked, once action is dispatched--> go to reducers
     }

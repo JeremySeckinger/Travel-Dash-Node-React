@@ -20,3 +20,13 @@ export const createTrip = (trip) => async (dispatch) => { // dispatch comes from
         console.log(error);
     }
 } //from here the action needs to be dispatched-->go into the PostTripForm ('Form/Form')form to do this
+
+export const updateTrip = (id, trip) => async (dispatch) => {
+    try {
+        const { data } = await api.updateTrip(id, trip);  //Returning updated trip here---response is destructed as data from response
+
+        dispatch({ type: 'UPDATE', payload: data});
+    } catch (error) {
+        console.log(error.message);
+    }
+}
