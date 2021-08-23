@@ -1,5 +1,3 @@
-
-// const path = require('path') //path is core node.js module
 const express = require('express');
 const mongoose = require('mongoose') // Added in after adding MongoStore session into session middleware (line 36)
 const dotenv = require('dotenv');

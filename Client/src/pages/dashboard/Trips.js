@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faRocket } from '@fortawesome/free-solid-svg-icons';
-import { Card, Col, Row, Button, Dropdown, ButtonGroup } from '@themesberg/react-bootstrap';
+import { Button, Dropdown} from '@themesberg/react-bootstrap';
 import { useDispatch } from 'react-redux';
 
 import { getTrips } from '/Users/jeremyseckinger/Desktop/100-Devs/100-hrs-project/travel-dash-react-node/Client/src/actions/trips.js';
@@ -12,7 +12,7 @@ import Form from '/Users/jeremyseckinger/Desktop/100-Devs/100-hrs-project/travel
 
 export default () => {
 
-    // const [currentId, setCurrentId] = useState(0);
+    const [currentId, setCurrentId] = useState(null);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -26,22 +26,16 @@ export default () => {
             <Dropdown className="btn-toolbar">
                 <Dropdown.Toggle as={Button} variant="primary" size="sm" className="mt-2">
                     <FontAwesomeIcon icon={faPlus} className="" />
-            </Dropdown.Toggle>
-            <Dropdown.Menu className="dashboard-dropdown dropdown-menu-left mt-2">
-            <Dropdown.Item href="#/AddTrip" className="fw-bold">
-                <FontAwesomeIcon icon={faRocket} className="me-2" /> New Trip
-            </Dropdown.Item>
-            </Dropdown.Menu>
-        </Dropdown>
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="dashboard-dropdown dropdown-menu-left mt-2">
+                <Dropdown.Item href="#/AddTrip" className="fw-bold">
+                    <FontAwesomeIcon icon={faRocket} className="me-2" /> New Trip
+                </Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
+        </div>
 
-    </div>
-
-    <Card>
-        <Card.Body>
-            <Trips />
-        </Card.Body>
-    </Card>
-
+        <Trips setCurrentId={setCurrentId}/>
     </>
     );
 };
