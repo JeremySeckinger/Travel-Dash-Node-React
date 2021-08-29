@@ -31,11 +31,22 @@ export const updateTrip = (id, trip) => async (dispatch) => {
     }
 }
 
-export const deleteTrip = (id) => async(dispatch) => {
+export const deleteTrip = (id) => async (dispatch) => {
     try {
         await api.deleteTrip(id); //Not passing in any data here just deleting by id
 
         dispatch({ type: 'DELETE', payload: id }) 
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const likeTrip = (id) => async (dispatch) => {
+    try {
+        //taken from updateTrip--> only thing changed is .likeTrip input, and removed trip as parameter so it's just id not (id, trip)
+        const { data } = await api.likeTrip(id);  //Returning updated trip here---response is deconstructed as data from response
+
+        dispatch({ type: 'UPDATE', payload: data});
     } catch (error) {
         console.log(error)
     }
