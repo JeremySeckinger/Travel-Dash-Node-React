@@ -9,5 +9,6 @@ router.get('/', tripController.getTrips); //executes the getTrips function
 router.post('/', tripController.createTrip); //executes the create trip function
 router.patch('/:id', tripController.updateTrip); //Patch to update existing documents dynamically with :id
 router.delete('/:id', tripController.deleteTrip); //Delete trip functionality
+router.patch('/:id/likeTrip', tripController.likeTrip); //Like trip functionality
 
 module.exports = router;

@@ -5,7 +5,7 @@ import { Card, Col, Button } from '@themesberg/react-bootstrap';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 
-import { deleteTrip } from '../../../actions/trips'
+import { deleteTrip, likeTrip } from '../../../actions/trips'
 
 const Trip = ({ trip, setCurrentId }) => { //destructures trip and brings in to use for component below
     const dispatch =  useDispatch(); 
@@ -22,7 +22,7 @@ const Trip = ({ trip, setCurrentId }) => { //destructures trip and brings in to 
                         <Card.Text>{moment(trip.createdAt).fromNow()}</Card.Text>
                         <Button variant="secondary" size="sm" color="dark" className="w-100" onClick={() => {} }>view trip</Button>
                         <Card.Footer>
-                            <Button variant="primary" size="sm" className="animate-up-2 mb-2 me-2" onClick={() => {} }><FontAwesomeIcon icon={faThumbsUp} /> Like {trip.likeCount}</Button>
+                            <Button variant="primary" size="sm" className="animate-up-2 mb-2 me-2" onClick={() => dispatch(likeTrip(trip._id)) }><FontAwesomeIcon icon={faThumbsUp} /> Like {trip.likeCount}</Button>
                             <Button variant="warning" size="sm" className="animate-down-2 mb-2 me-2" onClick={() => dispatch(deleteTrip(trip._id)) }><FontAwesomeIcon icon={faTrashAlt} /> Delete</Button>
                         </Card.Footer>
                     </Card.Body>

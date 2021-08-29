@@ -16,6 +16,10 @@ const TripSchema = new mongoose.Schema({  // pass in an object with the fields w
         default: 'public',
         enum: ['public', 'private'],// enum list of values for status options uses array
     },
+    likeCount: {
+        type: Number,
+        default: 0,
+    },
     // user: { // user connected to each trip
     //     type: mongoose.Schema.Types.ObjectId, // special type of mongoose object id connected with ref below
     //     ref: 'User', //refers to User model

@@ -49,7 +49,7 @@ module.exports = {
             res.json(updatedTrip);
     },
 
-//TODO @desc Delete trip
+//* @desc Delete trip
 // @route DELETE /trips/:id
     deleteTrip: async (req, res) => {
         const { id } = req.params;
@@ -61,6 +61,24 @@ module.exports = {
         await Trip.findByIdAndRemove(id);
 
         res.json({ message: 'Trip deleted succesfully'});
+    },
+
+//* @desc Like trip
+//@route PATCH /trips/:id/likeTrip
+    likeTrip: async (req, res) => {
+        const { id } = req.params;
+
+        //Makes sure id is valid--if not valid, return status 404 w/message
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No trip with that id');
+
+        //returns the trip
+        const trip = await Trip.findById(id);
+
+        //Updates trip using id as first param, passing in updates as second param (incrementing likeCount), third param required for update request specifying new = true as object
+        const updatedTrip =  await Trip.findByIdAndUpdate(id, { likeCount: trip.likeCount + 1}, { new: true });
+
+        //Note: updatedTrip-->really similar to defined variable in updateTrip function above
+        res.json(updatedTrip);
     }
 
 //TODO @desc Show single trip
