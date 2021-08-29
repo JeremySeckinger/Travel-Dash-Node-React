@@ -34,6 +34,10 @@ if(process.env.NODE_ENV === 'development') {
 
 server.use('/trips', tripsRoutes);
 
+// API confirmation 
+server.get('/', (req, res) => {
+    res.send('TRAVEL DASH API')
+})
 
 const PORT = process.env.PORT || 5000;
 
