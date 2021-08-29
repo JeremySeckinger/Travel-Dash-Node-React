@@ -41,22 +41,34 @@ module.exports = {
             const { id: _id } = req.params;
             const trip = req.body;
             
-
+            //Makes sure id is valid--if not valid, return status 404 w/message
             if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No trip with that id');
 
             const updatedTrip = await Trip.findByIdAndUpdate(_id, trip, { new: true });
         
             res.json(updatedTrip);
+    },
+
+//TODO @desc Delete trip
+// @route DELETE /trips/:id
+    deleteTrip: async (req, res) => {
+        const { id } = req.params;
+
+        //Makes sure id is valid--if not valid, return status 404 w/message
+        if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No trip with that id');
+
+        //Delete by id
+        await TripMessage.findByIdAndRemove(id);
+
+        res.json({ message: 'Trip deleted succesfully'});
     }
-
-
 
 //TODO @desc Show single trip
 // @route GET /trips/:id
 
 
-//TODO @desc Delete trip
-// @route DELETE /trips/:id
+
+
 
 //TODO @desc User Trips
 // @route GET /trips/user/:userId

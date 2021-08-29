@@ -30,3 +30,13 @@ export const updateTrip = (id, trip) => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const deleteTrip = (id) => async(dispatch) => {
+    try {
+        await api.deleteTrip(id); //Not passing in any data here just deleting by id
+
+        dispatch({ type: 'DELETE', payload: id }) 
+    } catch (error) {
+        console.log(error)
+    }
+}
