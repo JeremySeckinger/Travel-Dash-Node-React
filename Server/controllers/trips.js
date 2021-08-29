@@ -55,10 +55,10 @@ module.exports = {
         const { id } = req.params;
 
         //Makes sure id is valid--if not valid, return status 404 w/message
-        if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No trip with that id');
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No trip with that id');
 
         //Delete by id
-        await TripMessage.findByIdAndRemove(id);
+        await Trip.findByIdAndRemove(id);
 
         res.json({ message: 'Trip deleted succesfully'});
     }
