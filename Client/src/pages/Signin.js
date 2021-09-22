@@ -1,20 +1,35 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faEnvelope, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { Col, Row, Form, Card, Button, FormCheck, Container, InputGroup } from '@themesberg/react-bootstrap';
+import { Col, Row, Form, Card, Button, Container, InputGroup } from '@themesberg/react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login'; 
 import { useDispatch } from 'react-redux'; 
+import { signin, signup } from '../actions/auth';
 
 import { Routes } from "../routes";
 import BgImage from "../assets/img/illustrations/signin.svg";
 
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
 
 export default () => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const [formData, setFormData] = useState(initialState);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        dispatch(signin( formData, history ));
+        console.log(formData);
+    };
+
+    //* handleChange here is useful to dynamically set each state field
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
     const googleSuccess = async (res) => {
         const result = res?.profileObj; //optional chaining operator added here
@@ -49,33 +64,29 @@ export default () => {
                             <div className="text-center text-md-center mb-4 mt-md-0">
                                 <h3 className="mb-0">Sign in to Travel Dash</h3>
                             </div>
-                            <Form className="mt-4">
+                            <Form className="mt-4" onSubmit={handleSubmit}>
                                 <Form.Group id="email" className="mb-4">
                                     <Form.Label>Your Email</Form.Label>
                                     <InputGroup>
                                         <InputGroup.Text>
                                             <FontAwesomeIcon icon={faEnvelope} />
                                         </InputGroup.Text>
-                                        <Form.Control autoFocus required type="email" placeholder="example@company.com" />
+                                        <Form.Control name="email" onChange={handleChange} autoFocus required type="email" placeholder="example@company.com" />
                                     </InputGroup>
                                 </Form.Group>
                                 <Form.Group>
-                                <Form.Group id="password" className="mb-4">
-                                    <Form.Label>Your Password</Form.Label>
-                                    <InputGroup>
-                                    <InputGroup.Text>
-                                        <FontAwesomeIcon icon={faUnlockAlt} />
-                                    </InputGroup.Text>
-                                    <Form.Control required type="password" placeholder="Password" />
-                                    </InputGroup>
-                                </Form.Group>
-                                <div className="d-flex justify-content-between align-items-center mb-4">
-                                    <Form.Check type="checkbox">
-                                    <FormCheck.Input id="defaultCheck5" className="me-2" />
-                                    <FormCheck.Label htmlFor="defaultCheck5" className="mb-0">Remember me</FormCheck.Label>
-                                    </Form.Check>
-                                    <Card.Link className="small text-end">Lost password?</Card.Link>
-                                </div>
+                                    <Form.Group id="password" className="mb-1">
+                                        <Form.Label>Your Password</Form.Label>
+                                        <InputGroup>
+                                        <InputGroup.Text>
+                                            <FontAwesomeIcon icon={faUnlockAlt} />
+                                        </InputGroup.Text >
+                                        <Form.Control name="password" onChange={handleChange} required type="password" placeholder="Password" />
+                                        </InputGroup>
+                                    </Form.Group>
+                                    <div className="d-flex justify-content-end my-2">
+                                        <Card.Link className="small text-end">Lost password?</Card.Link>
+                                    </div>
                                 </Form.Group>
                                 <Button variant="primary" type="submit" className="w-100">
                                 Sign in

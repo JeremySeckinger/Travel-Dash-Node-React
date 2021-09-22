@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const morgan = require('morgan'); //shows requests made directly in console (HTTP method and such)
 const connectDB = require('./config/db');
 const tripsRoutes = require("./routes/trips");
+const userRoutes = require('./routes/users');
 const cors = require('cors');
 
 //* Load config
@@ -33,6 +34,7 @@ if(process.env.NODE_ENV === 'development') {
 
 
 server.use('/trips', tripsRoutes);
+server.use('/user', userRoutes);
 
 // API confirmation 
 server.get('/', (req, res) => {
