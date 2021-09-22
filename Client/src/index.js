@@ -31,11 +31,11 @@ import ScrollToTop from "./components/ScrollToTop";
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
-  <HashRouter>
-    <ScrollToTop />
-    <Provider store={store}>
-    <HomePage />
-    </Provider>
-  </HashRouter>,
-  document.getElementById("root")
+    <HashRouter>
+        <ScrollToTop />
+        <Provider store={store}>
+            <HomePage />
+        </Provider>
+    </HashRouter>,
+    document.getElementById("root")
 );

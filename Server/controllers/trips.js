@@ -38,7 +38,7 @@ module.exports = {
 //* @desc Update trip
 // @route PATCH trips/:id
     updateTrip: async (req, res) => {
-            const { id: _id } = req.params;
+            const { id: _id } = req.params; //destructures id and renames it _id then sets equal to request params
             const trip = req.body;
             
             //Makes sure id is valid--if not valid, return status 404 w/message
