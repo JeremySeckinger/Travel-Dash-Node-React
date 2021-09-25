@@ -10,7 +10,7 @@ module.exports = {
     createTrip: async (req, res) => {
         const trip = req.body;
 
-        const newTrip = new Trip(trip); 
+        const newTrip = new Trip({ ...trip, creator: req.userId, createdAt: new Date().toISOString() }); 
 
         try {
             await newTrip.save();
@@ -21,7 +21,27 @@ module.exports = {
         }
     },
 
-//* @desc Show all public trips
+    //TODO @desc Get single trip
+    // @route GET /trips/:id
+    // getTrip: async (req, res) => {
+        // const { id } = req.params;
+    //     try {
+
+    //         //Makes sure id is valid--if not valid, return status 404 w/message
+    //         if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No trip with that id');
+
+    //         const trip = await Trip.findById(id);  //find public trip
+
+
+    //             res.status(200).json(trip);
+    //     } catch (error) {
+    //     console.error(error)
+    //     res.status(404).json({ message: error.message });
+    //     }
+        
+    // },
+
+//* @desc Get all public trips
 // @route GET /trips
     getTrips: async (req, res) => {
         try {
@@ -68,24 +88,35 @@ module.exports = {
     likeTrip: async (req, res) => {
         const { id } = req.params;
 
+        //Check for authentication
+        if(!req.userId) {
+            return res.json({ message: 'Not authenticated'});
+        };
+
         //Makes sure id is valid--if not valid, return status 404 w/message
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No trip with that id');
+        if(!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(404).send('No trip with that id');
+        };
 
         //returns the trip
         const trip = await Trip.findById(id);
 
+        //Checks if the user has already liked
+        const index = trip.likes.findIndex((id) => id === String(req.userId));
+
+        //If user hasn't liked, then push userId. If user has liked, then remove userId
+        if(index === -1) {
+            trip.likes.push(req.userId);
+        } else {
+            trip.likes = trip.likes.filter((id) => id !== String(req.userId));
+        }
+
         //Updates trip using id as first param, passing in updates as second param (incrementing likeCount), third param required for update request specifying new = true as object
-        const updatedTrip =  await Trip.findByIdAndUpdate(id, { likeCount: trip.likeCount + 1}, { new: true });
+        const updatedTrip =  await Trip.findByIdAndUpdate(id, trip, { new: true });
 
         //Note: updatedTrip-->really similar to defined variable in updateTrip function above
-        res.json(updatedTrip);
+        res.status(200).json(updatedTrip);
     }
-
-//TODO @desc Show single trip
-// @route GET /trips/:id
-
-
-
 
 
 //TODO @desc User Trips

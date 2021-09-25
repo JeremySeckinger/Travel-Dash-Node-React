@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from 'react-redux';
+import Avatar from 'react-avatar';
 import { faSearch, faSignOutAlt, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import { Nav, Form, Image, Navbar, Dropdown, Container, InputGroup, Button } from '@themesberg/react-bootstrap';
@@ -53,7 +54,11 @@ export default (props) => {
 						<Dropdown as={Nav.Item}>
 							<Dropdown.Toggle as={Nav.Link} className="pt-1 px-0">             
 								<div className="media d-flex align-items-center">
-									<Image src={user.result.imageUrl} alt={user.result.name} className="user-avatar md-avatar rounded-circle" />
+                                { user?.result.imageUrl ? (
+                                    <Image src={user?.result.imageUrl} alt={user.result.name} className="user-avatar md-avatar rounded-circle" />
+                                ) : (
+                                    <Avatar name={user.result.name.charAt(0)} textSizeRatio={1.75} size="48" className="user-avatar md-avatar rounded-circle"/>
+                                )}
 									<div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
 										<span className="mb-0 font-small fw-bold">{user.result.name}</span>
 									</div>

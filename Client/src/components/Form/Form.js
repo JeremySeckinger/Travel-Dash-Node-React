@@ -9,29 +9,42 @@ import { createTrip, updateTrip } from "../../actions/trips";
 const PostTripForm = ({ currentId, setCurrentId }) => {
     const [tripData, setTripData] = useState({ title: '', status: '', body: '' }) 
     const trip = useSelector((state) => currentId ? state.trips.find((t) => t._id === currentId) : null )
-    const dispatch = useDispatch(); //brought in from actions/trips.js
+    const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     useEffect(() => {
         if(trip) setTripData(trip);
-    }, [trip]) // <--dependency array (when the value changes from nothing-->trip then use the above function)
+    }, [trip]) // <--dependency array (when the value changes from nothing-->trip then uses the above function)
 
-    const handleSubmit = (e) => { // once user submits--> send post request with all data entered
+    
+
+    const handleSubmit = async (e) => { // once user submits--> send post request with all data entered
         e.preventDefault(); // stops browser from refreshing
 
         if(currentId) {
-            dispatch(updateTrip(currentId, tripData));
+            dispatch(updateTrip(currentId, { ...tripData, name: user?.result?.name }));           
         } else {
-            dispatch(createTrip(tripData)); //makes request when submit button is clicked, once action is dispatched--> go to reducers
+            dispatch(createTrip({ ...tripData, name: user?.result?.name }));
         }
 
         clear();
 
-    }
+    };
 
     const clear = () => {
         setCurrentId(null);
-        setTripData({ title: '', status: '', body: '' })
-    }
+        setTripData({ title: '', status: '', body:'' });
+    };
+
+    if(!user?.result?.name) {
+        return (
+            <div>
+                <span>
+                    Sign in to create your own trip
+                </span>
+            </div>
+        )
+    };
 
     return (
 
@@ -52,6 +65,7 @@ const PostTripForm = ({ currentId, setCurrentId }) => {
                                 <Form.Group className="mb-3"> 
                                     <Form.Label>Status</Form.Label> 
                                     <Form.Select name="status" value={tripData.status} onChange={(e) => setTripData({ ...tripData, status: e.target.value })}>
+                                        <option>Select Public or Private</option>
                                         <option value="public">Public</option>
                                         <option value="private">Private</option>
                                     </Form.Select>

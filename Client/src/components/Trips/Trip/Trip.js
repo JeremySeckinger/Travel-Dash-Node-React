@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 
 import { deleteTrip, likeTrip } from '../../../actions/trips'
 
-const Trip = ({ trip, setCurrentId }) => { //destructures trip and brings in to use for component below
+const Trip = ({ trip, setCurrentId }) => { 
     const dispatch =  useDispatch(); 
     return (
 

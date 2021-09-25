@@ -7,7 +7,7 @@ import { Col, Row, Form, Card, Button, Container, InputGroup } from '@themesberg
 import { Link, useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login'; 
 import { useDispatch } from 'react-redux'; 
-import { signin, signup } from '../actions/auth';
+import { signin } from '../actions/auth';
 
 import { Routes } from "../routes";
 import BgImage from "../assets/img/illustrations/signin.svg";
@@ -15,6 +15,7 @@ import BgImage from "../assets/img/illustrations/signin.svg";
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
 
 export default () => {
+    
     const dispatch = useDispatch();
     const history = useHistory();
     const [formData, setFormData] = useState(initialState);
