@@ -30,6 +30,7 @@ export default (props) => {
     useEffect(() => {
         const token = user?.token;
 
+        //Handles logout on expiry of token
         if(token){
             const decodedToken = decode(token);
 
