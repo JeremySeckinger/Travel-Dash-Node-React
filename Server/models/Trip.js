@@ -20,6 +20,10 @@ const TripSchema = new mongoose.Schema({  // pass in an object with the fields w
         type: String,
         required: true,
     },
+    creator: {
+        type: String,
+        required: true,
+    },
     likes: {
         type: [String],
         default: [],

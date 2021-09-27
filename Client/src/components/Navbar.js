@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from 'react-redux';
+import decode from 'jwt-decode';
 import Avatar from 'react-avatar';
 import { faSearch, faSignOutAlt, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
@@ -29,7 +30,11 @@ export default (props) => {
     useEffect(() => {
         const token = user?.token;
 
-        //JWT ...
+        if(token){
+            const decodedToken = decode(token);
+
+            if(decodedToken.exp * 1000 < new Date().getTime()) logout();
+        }
 
         //When location changes user is set
         setUser(JSON.parse(localStorage.getItem('profile')));

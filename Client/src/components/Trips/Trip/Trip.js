@@ -28,9 +28,11 @@ const Trip = ({ trip, setCurrentId }) => {
 			<Col className="">
 				<Card border="primary" className="text-center">
 					<Card.Body>
-						<div className="float-end">
-							<Button variant="info" className="btn-icon-only btn-circle" onClick={() => setCurrentId(trip._id)}><FontAwesomeIcon icon={faEdit} /></Button>
-						</div>
+                        {(user?.result?.googleId === trip?.creator || user?.result?._id === trip.creator) && (
+                            <div className="float-end">
+                                <Button variant="info" className="btn-icon-only btn-circle" onClick={() => setCurrentId(trip._id)}><FontAwesomeIcon icon={faEdit} /></Button>
+                            </div>
+                        )}
 						<Card.Subtitle className="text-muted">{trip.name}</Card.Subtitle>
 						<Card.Header className="center-align" as="h3">{trip.title}</Card.Header>               
 						<Card.Text style={{ height: '10rem', margin: '1rem'}}>{trip.body}</Card.Text>
@@ -40,7 +42,11 @@ const Trip = ({ trip, setCurrentId }) => {
 							<Button variant="primary" size="sm" className="animate-up-2 mb-2 me-2" disabled={!user?.result} onClick={() => dispatch(likeTrip(trip._id)) }>
 								<Likes />
 							</Button>
-							<Button variant="warning" size="sm" className="animate-down-2 mb-2 me-2" onClick={() => dispatch(deleteTrip(trip._id)) }><FontAwesomeIcon icon={faTrashAlt} /> Delete</Button>
+                            {(user?.result?.googleId === trip?.creator || user?.result?._id === trip.creator) && (
+                                <Button variant="warning" size="sm" className="animate-down-2 mb-2 me-2" onClick={() => dispatch(deleteTrip(trip._id)) }>
+                                    <FontAwesomeIcon icon={faTrashAlt} /> Delete
+                                </Button>
+                            )}
 						</Card.Footer>
 					</Card.Body>
 				</Card>
