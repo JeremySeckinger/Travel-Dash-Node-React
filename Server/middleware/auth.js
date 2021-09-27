@@ -1,20 +1,34 @@
-// //middleware is just a function that has access to the request and response objects
+const jwt = require('jsonwebtoken');
 
-// //This piece ensures authorization with an if else to check for authentication and either move on (next) or redirect back to home page login
-// module.exports = {
-//     ensureAuth: function (req, res, next) { //next is the function called to move onto the next piece of middleware
-//         if(req.isAuthenticated()) {
-//             return next()
-//         } else {
-//             res.redirect('/')
-//         }
-//     },
-//     // ensure guest moves user to landing page without seeing the login if they are already authenticated
-//     ensureGuest: function (req, res, next) {
-//         if(req.isAuthenticated()) {
-//             res.redirect('/dashboard')
-//         } else {
-//             return next()
-//         }
-//     },
-// }
+module.exports = {
+    auth: async (req, res, next) => {
+        try {
+
+            //splits auth header and takes 2nd item as token
+            const token = req.headers.authorization.split(" ")[1];
+
+            //Checks for local auth (<500) or google auth (>500)
+            const isCustomAuth = token.length < 500;
+    
+            let decodedData;
+    
+            //Local Auth middleware
+            if(token && isCustomAuth) {
+                decodedData = jwt.verify(token, 'test');
+    
+                req.userId = decodedData?.id;
+            
+            //Google Auth middleware
+            } else {
+                decodedData = jwt.decode(token);
+                
+                //sub is an ID to differentiate Google users
+                req.userId = decodedData?.sub;
+            }
+    
+            next();
+        } catch (error) {
+            console.log(error)
+        }
+    }
+};
