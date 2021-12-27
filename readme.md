@@ -4,7 +4,7 @@
 
 This repository has been setup to track progression of Travel Dash as it gets a facelift--moving to a React frontend with a Node.js backend and associated API. This move will allow for enhanced functionality and a suite of additional features. 
 
-My focus on this project is to create with scalability in mind. I am diving deeper into system design and architecture as I work, so full disclosure--the current status of the code might be considered a bit ugly. I assure you this is a work in progress, and progress will be had! 
+My focus on this project is to create with scalability in mind. I am diving deeper into system design and architecture as I work, so full disclosure--the current status of the code might be considered a bit ugly.
 
 ## Description
 
