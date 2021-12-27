@@ -4,9 +4,9 @@ import { faPlus, faRocket } from '@fortawesome/free-solid-svg-icons';
 import { Button, Dropdown} from '@themesberg/react-bootstrap';
 import { useDispatch } from 'react-redux';
 
-import { getTrips } from '/Users/jeremyseckinger/Desktop/100-Devs/100-hrs-project/travel-dash-react-node/Client/src/actions/trips.js';
-import Trips from '/Users/jeremyseckinger/Desktop/100-Devs/100-hrs-project/travel-dash-react-node/Client/src/components/Trips/Trips.js';
-import PostTripForm from '/Users/jeremyseckinger/Desktop/100-Devs/100-hrs-project/travel-dash-react-node/Client/src/components/Form/Form.js';
+import { getTrips } from '/Users/jeremyseckinger/Desktop/Docs/100-Devs/100-hrs-project/travel-dash-react-node/Client/src/actions/trips.js';
+import Trips from '/Users/jeremyseckinger/Desktop/Docs/100-Devs/100-hrs-project/travel-dash-react-node/Client/src/components/Trips/Trips.js';
+import PostTripForm from '/Users/jeremyseckinger/Desktop/Docs/100-Devs/100-hrs-project/travel-dash-react-node/Client/src/components/Form/Form.js';
 
 
 
