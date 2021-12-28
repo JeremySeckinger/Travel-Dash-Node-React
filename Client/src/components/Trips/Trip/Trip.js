@@ -7,9 +7,14 @@ import { useDispatch } from 'react-redux';
 
 import { deleteTrip, likeTrip } from '../../../actions/trips'
 
-const Trip = ({ trip, setCurrentId }) => { 
+const Trip = ({ trip, setCurrentId, setShowDefault }) => { 
 	const dispatch =  useDispatch(); 
 	const user = JSON.parse(localStorage.getItem('profile'));
+
+    const handleEdit = () => {
+        setShowDefault(true);
+        setCurrentId(trip._id);
+    }
 
 	const Likes = () => {
 		if (trip.likes.length > 0) {
@@ -30,7 +35,7 @@ const Trip = ({ trip, setCurrentId }) => {
 					<Card.Body>
                         {(user?.result?.googleId === trip?.creator || user?.result?._id === trip.creator) && (
                             <div className="float-end">
-                                <Button variant="info" className="btn-icon-only btn-circle" onClick={() => setCurrentId(trip._id)}><FontAwesomeIcon icon={faEdit} /></Button>
+                                <Button variant="info" className="btn-icon-only btn-circle" onClick={handleEdit}><FontAwesomeIcon icon={faEdit} /></Button>
                             </div>
                         )}
 						<Card.Subtitle className="text-muted">{trip.name}</Card.Subtitle>
