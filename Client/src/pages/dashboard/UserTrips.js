@@ -1,10 +1,14 @@
-import React from "react";
-import { Breadcrumb, Button, ButtonGroup, Row, Col, InputGroup, Form, Dropdown, Card, Table } from "@themesberg/react-bootstrap";
+import React, { useState } from "react";
+import { Breadcrumb, Button, ButtonGroup, Row, Col, InputGroup, Form, Dropdown, Card, Table, Modal } from "@themesberg/react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faPlus, faCheck, faSearch, faSlidersH } from '@fortawesome/free-solid-svg-icons';
 import usertrips from '../../data/usertrips';
+import PostTripForm from "../../components/Form/Form";
 
 export default () => {
+    const [currentId, setCurrentId] = useState(null);
+    const [showDefault, setShowDefault] = useState(false);
+
     return (
         <>
             <div className="d-lg-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
@@ -18,7 +22,7 @@ export default () => {
                 </div>
                 
                 <div className="btn-toolbar mb-2 mb-md-0">
-                    <Button href="#/AddTrip" variant="primary" size="sm">
+                    <Button variant="primary" size="sm" onClick={() => setShowDefault(true)}>
                         <FontAwesomeIcon icon={faPlus} className="me-2" /> Add New Trip
                     </Button>
                 </div>
@@ -88,6 +92,10 @@ export default () => {
                     </Table>
                 </Card.Body>    
             </Card>
+
+        <Modal as={Modal.Dialog} centered show={showDefault}> 
+            <PostTripForm currentId={currentId} setCurrentId={setCurrentId} setShowDefault={setShowDefault}/>
+        </Modal>
         </>
     );
 };
