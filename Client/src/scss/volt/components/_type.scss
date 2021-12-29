@@ -2,95 +2,105 @@
  * = Typography
  */
 
-h1,h2,h3,h4,h5,h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-	font-family: $font-family-sans-serif;
-	font-weight: $headings-font-weight;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: $font-family-sans-serif;
+  font-weight: $headings-font-weight;
 }
 
-p, ol li, ul li, .p {
-	font-family: $font-family-base;
-	font-size: $paragraph-font-size;
-	font-weight: $font-weight-normal;
-	line-height: $paragraph-line-height;
+p,
+ol li,
+ul li,
+.p {
+  font-family: $font-family-base;
+  font-size: $paragraph-font-size;
+  font-weight: $font-weight-normal;
+  line-height: $paragraph-line-height;
 }
 
-a, .text-action {
-	color: $link-color;
-	transition: $transition-base;
-	&:hover{
-		color: $link-hover-color;
-		cursor: pointer;
-	}
+a,
+.text-action {
+  color: $link-color;
+  transition: $transition-base;
+  &:hover {
+    color: $link-hover-color;
+    cursor: pointer;
+  }
 }
 
 .lead {
-	+ .btn-wrapper {
-		margin-top: 3rem;
-	}
-	@include media-breakpoint-down(md){
-		font-size: $font-size-base;
-	}
+  + .btn-wrapper {
+    margin-top: 3rem;
+  }
+  @include media-breakpoint-down(md) {
+    font-size: $font-size-base;
+  }
 }
 
-.line-through{
-	-webkit-text-decoration: line-through;
-    text-decoration: line-through;
+.line-through {
+  -webkit-text-decoration: line-through;
+  text-decoration: line-through;
 }
 
-.text-italic{
-	font-style: italic !important;
+.text-italic {
+  font-style: italic !important;
 }
 
 .description {
-	font-size: $font-size-sm;
+  font-size: $font-size-sm;
 }
 
 // Headings
 
 .heading {
-	font-size: $h2-font-size;
-	font-weight: $font-weight-bold;
+  font-size: $h2-font-size;
+  font-weight: $font-weight-bold;
 }
 
-
-
-@include media-breakpoint-down(md){
-	.display-2{
-	  font-size: $display4-size;
-	}
+@include media-breakpoint-down(md) {
+  .display-2 {
+    font-size: $display4-size;
+  }
 }
 
-@include media-breakpoint-down(lg){
-	.display-3{
-	  font-size: $display4-size;
-
-	}
+@include media-breakpoint-down(lg) {
+  .display-3 {
+    font-size: $display4-size;
+  }
 }
-  
-@include media-breakpoint-down(sm){
-	.display-4{
-		font-size: $h4-font-size;
-	}
+
+@include media-breakpoint-down(sm) {
+  .display-4 {
+    font-size: $h4-font-size;
+  }
 }
 
 // Blockquotes
 .blockquote {
-	font-style: italic;
-	&.blockquote-large{
+  font-style: italic;
+  &.blockquote-large {
+    @include media-breakpoint-down(md) {
+      font-size: $font-size-lg;
+    }
+  }
+  .blockquote-footer {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bolder;
 
-		@include media-breakpoint-down(md) {
-			font-size: $font-size-lg;
-		}
-	}
- 	.blockquote-footer{
-		font-size: $font-size-sm;
-		font-weight: $font-weight-bolder;
-
-		@include media-breakpoint-down(md) {
-			font-size: $font-size-lg;
-		}
-	}
+    @include media-breakpoint-down(md) {
+      font-size: $font-size-lg;
+    }
+  }
 }
 
 // Font Sizes
@@ -100,85 +110,126 @@ a, .text-action {
   font-weight: $font-weight-light;
 }
 
-.font-base{
-	@include font-size($font-size-base);
-	font-weight: $font-weight-light;
+.font-base {
+  @include font-size($font-size-base);
+  font-weight: $font-weight-light;
 }
 
 .font-medium {
-	@include font-size($font-size-lg);
-	font-weight: $font-weight-light;
+  @include font-size($font-size-lg);
+  font-weight: $font-weight-light;
 }
 
+//PrismJs text
 
-//PrismJs text	
-
-code[class*="language-"], pre[class*="language-"]{
-	text-shadow: none;
-	font-family: $font-family-base;
-	font-weight: $font-weight-bold;
+code[class*="language-"],
+pre[class*="language-"] {
+  text-shadow: none;
+  font-family: $font-family-base;
+  font-weight: $font-weight-bold;
 }
 
 // Set color of theme buttons
 @each $color, $value in $theme-colors {
-	.text-#{$color} {
-        &, &:hover {
-			color: $value !important;
-		}
-
-		a:not(.btn),h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,.display-1, .display-2, .display-3, .display-4{
-			color: $value;
-		  }
-		  .text-muted{
-			color: rgba($value,.7) !important;
-		  }
+  .text-#{$color} {
+    &,
+    &:hover {
+      color: $value !important;
     }
+
+    a:not(.btn),
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    .display-1,
+    .display-2,
+    .display-3,
+    .display-4 {
+      color: $value;
+    }
+    .text-muted {
+      color: rgba($value, 0.7) !important;
+    }
+  }
 }
 
-
 article {
-	p, ul, ol, blockquote {
-		margin-bottom: 10px;
-	}
+  p,
+  ul,
+  ol,
+  blockquote {
+    margin-bottom: 10px;
+  }
 
-	p, ul li, ol li {
-		font-size: 1.1rem;
-	}
-	h1, h2, h3, h4, h5, h6,
-	.h1, .h2, .h3, .h4, .h5, .h6 {
-		margin-bottom: 10px;
-	}
+  p,
+  ul li,
+  ol li {
+    font-size: 1.1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    margin-bottom: 10px;
+  }
 }
 
 .folder-structure li {
-	font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .truncate-text {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.hero-title{
-	font-size: 3rem;
-	@include media-breakpoint-up(lg) {
-		font-size: 4.275rem;
-	}
+.multiline-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
-p, .docs-list li {
-	a {
-		color: $blue;
-		text-decoration: underline;
+.hero-title {
+  font-size: 3rem;
+  @include media-breakpoint-up(lg) {
+    font-size: 4.275rem;
+  }
+}
 
-		&:hover {
-			color: $blue;
-			text-decoration: none;
-		}
-	}
+p,
+.docs-list li {
+  a {
+    color: $blue;
+    text-decoration: underline;
+
+    &:hover {
+      color: $blue;
+      text-decoration: none;
+    }
+  }
 }
 
 .code-editor-error pre {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
