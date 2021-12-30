@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Card, Form, Button } from "@themesberg/react-bootstrap";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useDispatch, useSelector } from "react-redux";
 
 import { createTrip, updateTrip } from "../../actions/trips";
@@ -14,12 +16,10 @@ const PostTripForm = ({ currentId, setCurrentId, setShowDefault }) => {
 
   useEffect(() => {
     if (trip) setTripData(trip);
-  }, [trip]); // <--dependency array (when the value changes from nothing-->trip then uses the above function)
+  }, [trip]);
 
   const handleSubmit = async (e) => {
-    // once user submits--> send post request with all data entered
-    e.preventDefault(); // stops browser from refreshing
-
+    e.preventDefault();
     if (currentId) {
       dispatch(
         updateTrip(currentId, {
@@ -97,16 +97,20 @@ const PostTripForm = ({ currentId, setCurrentId, setShowDefault }) => {
               </Row>
               <Row>
                 <Form.Group className="mb-3">
-                  <Form.Label sm="2">Add trip details here</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    placeholder="Add trip details here"
-                    style={{ height: "100px" }}
-                    name="body"
-                    value={tripData.body}
-                    onChange={(e) =>
-                      setTripData({ ...tripData, body: e.target.value })
-                    }
+                  <Form.Label sm="2">
+                    {currentId ? "Edit" : "Add"} trip details here
+                  </Form.Label>
+                  <CKEditor
+                    editor={ClassicEditor}
+                    config={{
+                      placeholder: "Add trip details here",
+                    }}
+                    data={trip?.body || {}}
+                    onChange={(event, editor) => {
+                      const data = editor.getData();
+                      console.log({ event, editor, data });
+                      setTripData({ ...tripData, body: data });
+                    }}
                   />
                 </Form.Group>
               </Row>

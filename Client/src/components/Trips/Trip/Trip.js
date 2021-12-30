@@ -8,6 +8,7 @@ import {
 import { Card, Col, Button, Image } from "@themesberg/react-bootstrap";
 import moment from "moment";
 import { useDispatch } from "react-redux";
+import DOMPurify from "dompurify";
 
 import { deleteTrip, likeTrip } from "../../../actions/trips";
 import Avatar from "../../Avatar/Avatar";
@@ -19,6 +20,12 @@ const Trip = ({ trip, setCurrentId, setShowDefault }) => {
   const handleEdit = () => {
     setShowDefault(true);
     setCurrentId(trip._id);
+  };
+
+  const createMarkup = (html) => {
+    return {
+      __html: DOMPurify.sanitize(html),
+    };
   };
 
   const Likes = () => {
@@ -54,7 +61,7 @@ const Trip = ({ trip, setCurrentId, setShowDefault }) => {
       <Card
         border="primary"
         className="text-center"
-        style={{ height: "22.5rem" }}
+        style={{ height: "22rem" }}
       >
         {(user?.result?.googleId === trip?.creator ||
           user?.result?._id === trip.creator) && (
@@ -83,13 +90,11 @@ const Trip = ({ trip, setCurrentId, setShowDefault }) => {
           </Card.Header>
           <Card.Text
             className="multiline-ellipsis mt-2 mb-2"
+            dangerouslySetInnerHTML={createMarkup(trip.body)}
             style={{
-              height: "8.5rem",
-              lineHeight: "normal",
+              height: "8rem",
             }}
-          >
-            {trip.body}
-          </Card.Text>
+          ></Card.Text>
           <div className="d-flex justify-content-center pb-3">
             {trip?.user?.image ? (
               <Image
