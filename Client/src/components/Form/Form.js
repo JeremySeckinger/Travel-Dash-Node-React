@@ -20,13 +20,22 @@ const PostTripForm = ({ currentId, setCurrentId, setShowDefault }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (currentId) {
       dispatch(
-        updateTrip(currentId, { ...tripData, name: user?.result?.name })
+        updateTrip(currentId, {
+          ...tripData,
+          name: user?.result?.name,
+          image: user?.result?.imageUrl,
+        })
       );
     } else {
-      dispatch(createTrip({ ...tripData, name: user?.result?.name }));
+      dispatch(
+        createTrip({
+          ...tripData,
+          name: user?.result?.name,
+          image: user?.result?.imageUrl,
+        })
+      );
     }
 
     clear();
