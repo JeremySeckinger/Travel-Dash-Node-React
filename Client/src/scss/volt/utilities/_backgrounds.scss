@@ -3,39 +3,46 @@
 */
 
 @each $color, $value in $theme-colors {
-	@include bg-gradient-variant(".bg-gradient-#{$color}", $value);
+  @include bg-gradient-variant(".bg-gradient-#{$color}", $value);
 }
 
 // Backgrounds Overlay
 @each $color, $value in $theme-colors {
-    .overlay-#{$color}{ 
-        &:before{
-            position: absolute;
-            content:"";
-            background: $value;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            opacity: 0.8;
-            z-index: 0;
-        }
+  .overlay-#{$color} {
+    &:before {
+      position: absolute;
+      content: "";
+      background: $value;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0.8;
+      z-index: 0;
     }
+  }
 }
 
 .section-image {
-   @include background-image(no-repeat, cover); 
+  @include background-image(no-repeat, cover);
 }
 
-.bg-secondary-alt{
-    background-color: lighten($secondary, 15% );
+.bg-secondary-alt {
+  background-color: lighten($secondary, 15%);
 }
 
 .form-bg-image {
-    background-repeat: no-repeat !important;
-    background-position: top center !important;
+  background-repeat: no-repeat;
+  background-position: top center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
 }
 
 .fill-soft {
-    fill: $soft;
+  fill: $soft;
 }
