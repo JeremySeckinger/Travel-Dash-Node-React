@@ -90,9 +90,9 @@ const Trip = ({ trip, setCurrentId, setShowDefault }) => {
             {trip.body}
           </Card.Text>
           <div className="d-flex justify-content-center pb-3">
-            {trip?.imageUrl ? (
+            {trip?.user?.image ? (
               <Image
-                src={trip.imageUrl}
+                src={trip.image}
                 alt={trip.name}
                 className="user-avatar md-avatar rounded-circle"
               />
