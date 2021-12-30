@@ -21,7 +21,7 @@ import { useDispatch } from "react-redux";
 import { signup } from "../actions/auth";
 
 import { Routes } from "../routes";
-import BgImage from "../assets/img/illustrations/signin.svg";
+import BgImage from "../assets/img/pages/ian-schneider-jk8rarn6lmw-unsplash-min.jpg";
 
 const initialState = {
   firstName: "",
@@ -66,8 +66,11 @@ export default () => {
   };
 
   return (
-    <main>
-      <section className="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
+    <main
+      className="justify-content-center form-bg-image"
+      style={{ backgroundImage: `url(${BgImage})` }}
+    >
+      <section className="d-flex align-items-center my-5 mt-lg-5 mb-lg-5">
         <Container>
           <p className="text-center">
             <Card.Link
@@ -79,19 +82,16 @@ export default () => {
               homepage
             </Card.Link>
           </p>
-          <Row
-            className="justify-content-center form-bg-image"
-            style={{ backgroundImage: `url(${BgImage})` }}
-          >
+          <Row>
             <Col
               xs={12}
               className="d-flex align-items-center justify-content-center"
             >
-              <div className="mb-4 mb-lg-0 bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
-                <div className="text-center text-md-center mb-4 mt-md-0">
+              <div className="mb-4 mb-lg-0 bg-white shadow-soft border rounded border-light p-4 px-lg-5 w-100 fmxw-500">
+                <div className="text-center text-md-center mt-md-0">
                   <h3 className="mb-0">Create an account</h3>
                 </div>
-                <Form className="mt-4" onSubmit={handleSubmit}>
+                <Form className="mt-3" onSubmit={handleSubmit}>
                   <Form.Group id="firstName" className="mb-4">
                     <Form.Label>First Name</Form.Label>
                     <InputGroup>
@@ -170,11 +170,11 @@ export default () => {
                     Sign up
                   </Button>
                 </Form>
-                <div className="mt-3 mb-4 text-center">
+                <div className="my-2 text-center">
                   <span className="fw-normal">or</span>
                 </div>
 
-                <div className="d-flex justify-content-center my-4">
+                <div className="d-flex justify-content-center my-2">
                   <GoogleLogin
                     clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                     render={(renderProps) => (
@@ -192,7 +192,7 @@ export default () => {
                     cookiePolicy="single_host_origin"
                   />
                 </div>
-                <div className="d-flex justify-content-center align-items-center mt-4">
+                <div className="d-flex justify-content-center align-items-center mt-2">
                   <span className="fw-normal">
                     Already have an account?
                     <Card.Link
