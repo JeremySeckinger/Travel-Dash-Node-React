@@ -12,8 +12,6 @@ const PostTripForm = ({ currentId, setCurrentId, setShowDefault }) => {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
 
-  console.log(user);
-
   useEffect(() => {
     if (trip) setTripData(trip);
   }, [trip]); // <--dependency array (when the value changes from nothing-->trip then uses the above function)

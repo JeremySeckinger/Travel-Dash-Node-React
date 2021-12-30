@@ -54,7 +54,7 @@ const Trip = ({ trip, setCurrentId, setShowDefault }) => {
       <Card
         border="primary"
         className="text-center"
-        style={{ height: "25rem" }}
+        style={{ height: "22.5rem" }}
       >
         {(user?.result?.googleId === trip?.creator ||
           user?.result?._id === trip.creator) && (
@@ -82,9 +82,10 @@ const Trip = ({ trip, setCurrentId, setShowDefault }) => {
             {trip.title}
           </Card.Header>
           <Card.Text
-            className="multiline-ellipsis mt-2 mb-4"
+            className="multiline-ellipsis mt-2 mb-2"
             style={{
-              height: "9.75rem",
+              height: "8.5rem",
+              lineHeight: "normal",
             }}
           >
             {trip.body}
@@ -108,30 +109,33 @@ const Trip = ({ trip, setCurrentId, setShowDefault }) => {
           </Card.Subtitle>
           <Card.Footer className="pt-2">
             <Button
-              variant="secondary"
+              variant=""
               size="sm"
               color="dark"
-              className="w-100"
+              className="w-100 btn-link"
               onClick={() => {}}
+              bsPrefix="text"
             >
               view trip
             </Button>
             <Button
-              variant="primary"
-              size="sm"
-              className="animate-up-2 w-50"
+              variant=""
+              size="m"
+              className="animate-up-2 w-50 btn-link position-absolute float-end"
               disabled={!user?.result}
               onClick={() => dispatch(likeTrip(trip._id))}
+              style={{ left: "-1rem", bottom: "0rem" }}
             >
               <Likes />
             </Button>
             {(user?.result?.googleId === trip?.creator ||
               user?.result?._id === trip.creator) && (
               <Button
-                variant="warning"
-                size="sm"
-                className="animate-down-2 w-50"
+                variant=""
+                size="m"
+                className="animate-down-2 w-50 btn-link position-absolute float-end"
                 onClick={() => dispatch(deleteTrip(trip._id))}
+                style={{ right: "-1rem", bottom: "0rem" }}
               >
                 <FontAwesomeIcon icon={faTrashAlt} /> Delete
               </Button>
