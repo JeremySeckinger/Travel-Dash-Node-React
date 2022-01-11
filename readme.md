@@ -26,7 +26,7 @@ To run this project, fork the repo and clone it to your local machine.
 
 ### Install
 
-`npm install`
+`yarn install`
 
 ### Things to add
 
@@ -45,13 +45,13 @@ To run this project, fork the repo and clone it to your local machine.
 
 Front end:
 
-`npm start`
+`yarn start`
 
 Back end:
 
-`npm start`
+`yarn start`
 or 
-`npm run dev`
+`yarn run dev`
 
 ---
 
