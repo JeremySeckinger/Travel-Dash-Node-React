@@ -23,6 +23,7 @@ const Avatar = (props) => {
       <img
         src={`https://robohash.org/${props.name}.png?set=set2`}
         style={avatarStyle}
+        alt=""
       />
     </div>
   );
