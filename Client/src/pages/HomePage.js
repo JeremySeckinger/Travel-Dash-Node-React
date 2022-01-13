@@ -101,6 +101,6 @@ export default () => (
     {/* <RouteWithSidebar exact path={Routes.AddTrip.path} component={AddTrip} />  */}
     {/* <RouteWithSidebar exact path={Routes.Login.path} component={Login} />  */}
 
-    <Redirect to={Routes.NotFound.path} />
+    <Redirect to={Routes.Trips.path} />
   </Switch>
 );
