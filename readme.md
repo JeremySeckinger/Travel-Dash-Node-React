@@ -14,7 +14,7 @@ Social travel dashboard linking travelers with the tools and community they need
 
 ## Technologies Used
 
-Full stack: Node with Express, React, Redux, Bootstrap 5, MongoDB, Google OAuth 2.0, (soon-to-be) deployed with Heroku
+Full stack: Node, Express, React, Redux, Bootstrap 5, MongoDB, Google OAuth 2.0, deployed with Heroku (back end) and Netlify (front end)
 
 The front end uses Themesburg's Volt free and open source Bootstrap 5 Admin Dashboard. It serves as the base template for the react app--allowing Travel Dash to use a modern UI/UX focused design. The components will be heavily customized to adapt to the focus of Travel Dash, with plenty of original components and additional features added on to its base. 
 
@@ -34,10 +34,11 @@ To run this project, fork the repo and clone it to your local machine.
   - REACT_APP_GOOGLE_CLIENT_ID = `generate your own google client id and use here`
 
 - Create a `.env` file and add the following (back end)
-  - PORT = 5000
   - MONGO_URI = 
   - GOOGLE_CLIENT_ID = 
   - GOOGLE_CLIENT_SECRET = 
+
+- Change the baseURL on the client src/api/index.js to what port you will be using locally
 
 #### Note: you will need to setup a cluster on MongoDB
 
@@ -123,6 +124,7 @@ Right now this project's functionality allows user's to:
 - Create trips to add to their dashboard to keep track of travels 
     - Allows users to document all the details they want about their trip in a blog style format with styling provided by CKEditor
 - Edit trips
+- Delete trips
 - Make their trips public to other logged in users
 
 Next up:
@@ -130,7 +132,7 @@ Next up:
 - [ ] View individual trips
 
 
-## Wishlist of tasks and feature adds:
+## Wishlist of tasks and feature adds ([project board](https://github.com/JeremySeckinger/Travel-Dash-Node-React/projects/1):
     
    - [ ] Divide trips into "upcoming" and "past" trips 
         - [ ] For "upcoming" add inputs for flight details, schedule/agenda, places to visit/must do's,
