@@ -51,8 +51,10 @@ const PostTripForm = ({ currentId, setCurrentId, setShowDefault }) => {
 
   if (!user?.result?.name) {
     return (
-      <div>
-        <span>Sign in to create your own trip</span>
+      <div className="d-flex">
+        <span className="my-5" style={{ width: "44%", margin: "auto" }}>
+          Sign in to create your own trip
+        </span>
       </div>
     );
   }
