@@ -132,7 +132,7 @@ Next up:
 - [ ] View individual trips
 
 
-## Wishlist of tasks and feature adds ([project board](https://github.com/JeremySeckinger/Travel-Dash-Node-React/projects/1):
+## Wishlist of tasks and feature adds ([project board](https://github.com/JeremySeckinger/Travel-Dash-Node-React/projects/1)):
     
    - [ ] Divide trips into "upcoming" and "past" trips 
         - [ ] For "upcoming" add inputs for flight details, schedule/agenda, places to visit/must do's,
